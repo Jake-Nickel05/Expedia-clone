@@ -12,8 +12,22 @@ import {
 import FlightList from "./FlightList";
 import { useState } from "react";
 
+// Bucket upper bounds in rupees. Matches the actual price range in db.json
+// (roughly 4,000-9,000). Previously these were "5"/"6"/"7"/"8" and the query
+// builder did priceValue - 2000, which for priceValue=8 produced
+// price_gte=-1992&price_lte=8 -- a range no flight could ever match, so the
+// list showed nothing by default even with a working API.
+const PRICE_BUCKETS = {
+  "5000": { gte: 4000, lte: 5000 },
+  "6000": { gte: 5000, lte: 6000 },
+  "7000": { gte: 6000, lte: 7000 },
+  "9000": { gte: 7000, lte: 9000 },
+};
+
 const SideBar = () => {
-  const [priceValue, setPriceValue] = useState(8);
+  // No selection by default so the list shows every flight until the user
+  // actively filters, instead of silently applying an invalid range.
+  const [priceValue, setPriceValue] = useState("");
   const [classes, setClasses] = useState("");
   const [page, setPage] = useState(1);
   const [Packaging, setpackaging] = useState("");
@@ -55,10 +69,10 @@ const SideBar = () => {
             </Heading>
             <RadioGroup onChange={setPriceValue} value={priceValue}>
               <Stack direction="column">
-                <Radio value="5">₹ 4000 - ₹ 5000</Radio>
-                <Radio value="6">₹ 5000 - ₹ 6000</Radio>
-                <Radio value="7">₹ 6000 - ₹ 7000</Radio>
-                <Radio value="8">₹ 7000 - ₹ 8000</Radio>
+                <Radio value="5000">₹ 4000 - ₹ 5000</Radio>
+                <Radio value="6000">₹ 5000 - ₹ 6000</Radio>
+                <Radio value="7000">₹ 6000 - ₹ 7000</Radio>
+                <Radio value="9000">₹ 7000 - ₹ 9000</Radio>
               </Stack>
             </RadioGroup>
           </Box>
@@ -127,7 +141,7 @@ const SideBar = () => {
               </Stack>
           {/* Pagination Part UI End */}
 
-          <FlightList page={page} priceValue={priceValue} />
+          <FlightList page={page} priceRange={PRICE_BUCKETS[priceValue]} />
         </Box>
       </Box>
   );

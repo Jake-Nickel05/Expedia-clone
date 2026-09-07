@@ -1,27 +1,42 @@
-import { Box, Image, Flex, Button } from "@chakra-ui/react";
+import { Box, Image, Flex, Button, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function FlightCard({ data }) {
   const { id, airline, from, to, departure, arrival, price, totalTime } = data;
   const toast = useToast();
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    axios.post(`http://localhost:8000/flightcart`, data);
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err))
-
-    toast({
-      title: "Flight Add to Cart",
-      description: "Please Proceed to Payment",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
+  const handleAddToCart = () => {
+    axios
+      .post(`http://localhost:8080/flightcart`, data)
+      .then(() => {
+        toast({
+          title: "Flight Added to Cart",
+          description: "Please Proceed to Payment",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to add flight to cart:", err);
+        toast({
+          title: "Couldn't add flight to cart",
+          description: "Please try again.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      });
   };
 
   
+
+  const handleBookNow = () => {
+    navigate("/checkout", { state: { type: "flight", items: [data] } });
+  };
 
   const Booknow = {
     marginTop: "3%",
@@ -77,11 +92,19 @@ export default function FlightCard({ data }) {
         <h3>Price</h3>
         <b>{price}</b>
       </Flex>
-      <Link to={"/checkout"}>
-        <Button style={Booknow} onClick={handleClick}>
+      <VStack spacing={2}>
+        <Link to={`/flight/${id}`}>
+          <Button size="sm" variant="outline">
+            View Details
+          </Button>
+        </Link>
+        <Button size="sm" onClick={handleAddToCart}>
+          Add to Cart
+        </Button>
+        <Button style={Booknow} onClick={handleBookNow}>
           Book Now
         </Button>
-      </Link>
+      </VStack>
     </Box>
   );
 }

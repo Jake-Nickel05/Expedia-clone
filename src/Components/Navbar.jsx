@@ -30,6 +30,7 @@ import {
   import {HiOutlineChevronDown} from 'react-icons/hi'
   import {MdOutlineFlight} from 'react-icons/md'
   import {AiFillCar} from 'react-icons/ai'
+  import {FiShoppingCart} from 'react-icons/fi'
   import {Link as RouterLink} from 'react-router-dom'
   import { useSelector, useDispatch } from 'react-redux';
   import { logout_user } from '../Redux/Authantication/auth.action';
@@ -101,6 +102,12 @@ import {
             <Box fontWeight={'500'} fontSize={{base:'12px',sm:'16px'}} display={'flex'} >
                 Trip
             </Box>
+
+            <RouterLink to="/cart">
+              <Box fontWeight={'500'} fontSize={{base:'16px',sm:'23px'}}  display={'flex'} >
+                  <Icon mt={0.5} mr={1}   as={FiShoppingCart} />
+              </Box>
+            </RouterLink>
 
             <Box fontWeight={'500'} fontSize={{base:'16px',sm:'23px'}}  display={'flex'} >
                 <Icon mt={0.5} mr={1}   as={IoIosNotifications} />

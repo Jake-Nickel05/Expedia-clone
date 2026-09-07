@@ -5284,5 +5284,32 @@
       "title": "Ranakpur Jain Temple",
       "price": "3,334"
     }
+  ],
+  "bookings": [
+    {
+      "guestFirstName": "s",
+      "guestSurname": "s",
+      "guestMobile": "1234567890",
+      "userNumber": "3322734407",
+      "hotels": [],
+      "flights": [
+        {
+          "airline": "Vistara",
+          "number": "6E 2054",
+          "from": "DELHI",
+          "to": "MUMBAI",
+          "departure": "04:20",
+          "arrival": "07:15",
+          "price": "6999",
+          "totalTime": "02h 55m",
+          "id": 1
+        }
+      ],
+      "subtotal": 6999,
+      "taxes": 630,
+      "total": 7629,
+      "bookedAt": "2026-09-07T21:56:23.646Z",
+      "id": 1
+    }
   ]
 }

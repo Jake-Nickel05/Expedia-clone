@@ -11,8 +11,11 @@ import HomePage from "./HomePage";
 import { Login } from "./Login";
 import { Register } from "./Register";
 import StayData from "./Stay/StayData";
+import HotelDetails from "./Stay/HotelDetails";
 import CheckoutPage from "./CheckoutPage";
 import FlightData from "./Flights/FlightData";
+import FlightDetails from "./Flights/FlightDetails";
+import Cart from "./Cart";
 
 export const AllRoutes = () => {
     return (
@@ -28,7 +31,10 @@ export const AllRoutes = () => {
             <Route path="/admin/hotels" element={<AllHotels />} />
             <Route path="/ThingsToDo" element={<Destination/>}/>
             <Route path="/stay" element={<StayData />} />
+            <Route path="/stay/:id" element={<HotelDetails />} />
             <Route path="/flight" element={<FlightData />} />
+            <Route path="/flight/:id" element={<FlightDetails />} />
+            <Route path="/cart" element={<Cart />} />
             
             <Route path="/checkout" element={<CheckoutPage/>} ></Route>
           </Routes>
