@@ -12,6 +12,7 @@ import { fetch_users, login_user } from "../Redux/Authantication/auth.action";
 
 const auth = getAuth(firebase_app);
 const state = {
+  countryCode: "+91",
   number: "",
   otp: "",
   verify: false,
@@ -29,13 +30,13 @@ export const Login = () => {
     };
   });
 
-  const { number, otp, verify } = check;
+  const { countryCode, number, otp, verify } = check;
 
   let exist = false;
   let data = {};
 
   for (let i = 0; i <= user.length - 1; i++) {
-    if (user[i].number == number) {
+    if (user[i].number == number && (user[i].countryCode || "+91") === countryCode) {
       exist = true;
       data = user[i];
       break;
@@ -62,7 +63,7 @@ export const Login = () => {
   function handleVerifyNumber() {
     document.querySelector("#nextText").innerText = "Please wait...";
     onCapture();
-    const phoneNumber = `+91${number}`;
+    const phoneNumber = `${countryCode}${number}`;
     const appVerifier = window.recaptchaVerifier;
     if (number.length === 10) {
       if (exist) {
@@ -152,6 +153,15 @@ export const Login = () => {
           <div className="loginInputB">
             <label htmlFor="">Enter Your Number</label>
             <span>
+              <select
+                disabled={verify}
+                name="countryCode"
+                value={countryCode}
+                onChange={(e) => handleChangeMobile(e)}
+              >
+                <option value="+91">India (+91)</option>
+                <option value="+1">United States (+1)</option>
+              </select>
               <input
                 type="number"
                 readOnly={verify}

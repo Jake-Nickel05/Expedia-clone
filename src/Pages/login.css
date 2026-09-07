@@ -44,6 +44,12 @@
     border: 1px solid gray;
     border-radius: 5px;
 }
+.mainLogin > .loginBx > .loginInputB > span select{
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
 .mainLogin > .loginBx > .loginInputB > span button{
     /* border: 1px solid b; */
     background-color: royalblue;

@@ -13,6 +13,7 @@ import Navbar from "../Components/Navbar";
 
 const auth = getAuth(firebase_app);
 const state = {
+  countryCode: "+91",
   number: "",
   otp: "",
   user_name: "",
@@ -26,7 +27,7 @@ export const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let exist = false;
-  const { number, otp, verify, otpVerify, user_name, password } = check;
+  const { countryCode, number, otp, verify, otpVerify, user_name, password } = check;
 
   // store value and getting user to check if the number is exist or not
   const { user, isLoading } = useSelector((store) => {
@@ -38,7 +39,7 @@ export const Register = () => {
 
   //  check if the user is exist of not
   for (let i = 0; i <= user.length - 1; i++) {
-    if (user[i].number === number) {
+    if (user[i].number === number && (user[i].countryCode || "+91") === countryCode) {
       exist = true;
       break;
     }
@@ -47,6 +48,7 @@ export const Register = () => {
   //  capture
   const handleRegisterUser = () => {
     let newObj = {
+      countryCode,
       number,
       user_name,
       password,
@@ -80,7 +82,7 @@ export const Register = () => {
   function handleVerifyNumber() {
     document.querySelector("#nextButton").innerText = "Please wait...";
     onCapture();
-    const phoneNumber = `+91${number}`;
+    const phoneNumber = `${countryCode}${number}`;
     const appVerifier = window.recaptchaVerifier;
     if (number.length === 10) {
       if (exist) {
@@ -165,6 +167,15 @@ export const Register = () => {
           <div className="loginInputB" id="loginNumber">
             <label htmlFor="">Enter Your Number</label>
             <span>
+              <select
+                disabled={verify}
+                name="countryCode"
+                value={countryCode}
+                onChange={(e) => handleChangeMobile(e)}
+              >
+                <option value="+91">India (+91)</option>
+                <option value="+1">United States (+1)</option>
+              </select>
               <input
                 type="number"
                 readOnly={verify}
