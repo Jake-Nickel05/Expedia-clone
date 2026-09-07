@@ -15,6 +15,7 @@ export const AdminDashboard = () => {
   const [giftCard, setGiftCard] = useState(0);
   const [things, setThings] = useState(0);
   const [bookings, setBookings] = useState(0);
+  const [cartItems, setCartItems] = useState(0);
  const [loading, setLoading] = useState(false);
 
   const getHotel = () => {
@@ -73,6 +74,16 @@ export const AdminDashboard = () => {
         console.log(err);
       });
 
+      Promise.all([
+        axios.get("http://localhost:8080/hotelcart"),
+        axios.get("http://localhost:8080/flightcart"),
+      ])
+        .then(([hotelRes, flightRes]) => {
+          setCartItems(hotelRes.data.length + flightRes.data.length);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
   };
 
@@ -91,6 +102,7 @@ export const AdminDashboard = () => {
           <h1><Link to={"/admin/hotels"}>All Hotels</Link></h1>
           <h1><Link to={"/admin/users"}>All Users</Link></h1>
           <h1><Link to={"/admin/bookings"}>All Bookings</Link></h1>
+          <h1><Link to={"/admin/cart"}>Cart Oversight</Link></h1>
           <h1><Link to={"/"}>Log out</Link></h1>
         </div>
         <div className="mainBox">
@@ -121,6 +133,11 @@ export const AdminDashboard = () => {
               <h1>Total Bookings</h1>
               {<h1>{bookings}</h1>}
               <Link to="/admin/bookings">View</Link>
+            </div>
+            <div className="dataBx">
+              <h1>Items in Cart</h1>
+              {<h1>{cartItems}</h1>}
+              <Link to="/admin/cart">View</Link>
             </div>
             <div className="dataBx">
               <h1>Giftcards</h1>

@@ -10,6 +10,7 @@ import { AdminUsers } from "./Admin/AdminUsers";
 import { AdminUserDetail } from "./Admin/AdminUserDetail";
 import { AdminBookings } from "./Admin/AdminBookings";
 import { AdminBookingDetail } from "./Admin/AdminBookingDetail";
+import { AdminCart } from "./Admin/AdminCart";
 import { Destination } from "./ThingsTodo/Destination";
 import HomePage from "./HomePage";
 import { Login } from "./Login";
@@ -39,6 +40,7 @@ export const AllRoutes = () => {
             <Route path="/admin/users/:id" element={<AdminUserDetail />} />
             <Route path="/admin/bookings" element={<AdminBookings />} />
             <Route path="/admin/bookings/:id" element={<AdminBookingDetail />} />
+            <Route path="/admin/cart" element={<AdminCart />} />
             <Route path="/ThingsToDo" element={<Destination/>}/>
             <Route path="/stay" element={<StayData />} />
             <Route path="/stay/:id" element={<HotelDetails />} />
