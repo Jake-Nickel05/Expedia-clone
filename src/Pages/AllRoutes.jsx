@@ -8,6 +8,8 @@ import { AdminProducts } from "./Admin/AdminProducts";
 import { AllHotels } from "./Admin/AllHotels";
 import { AdminUsers } from "./Admin/AdminUsers";
 import { AdminUserDetail } from "./Admin/AdminUserDetail";
+import { AdminBookings } from "./Admin/AdminBookings";
+import { AdminBookingDetail } from "./Admin/AdminBookingDetail";
 import { Destination } from "./ThingsTodo/Destination";
 import HomePage from "./HomePage";
 import { Login } from "./Login";
@@ -35,6 +37,8 @@ export const AllRoutes = () => {
             <Route path="/admin/hotels" element={<AllHotels />} />
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/users/:id" element={<AdminUserDetail />} />
+            <Route path="/admin/bookings" element={<AdminBookings />} />
+            <Route path="/admin/bookings/:id" element={<AdminBookingDetail />} />
             <Route path="/ThingsToDo" element={<Destination/>}/>
             <Route path="/stay" element={<StayData />} />
             <Route path="/stay/:id" element={<HotelDetails />} />

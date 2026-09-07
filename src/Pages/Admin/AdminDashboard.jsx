@@ -14,6 +14,7 @@ export const AdminDashboard = () => {
   const [users, setUsers] = useState(0);
   const [giftCard, setGiftCard] = useState(0);
   const [things, setThings] = useState(0);
+  const [bookings, setBookings] = useState(0);
  const [loading, setLoading] = useState(false);
 
   const getHotel = () => {
@@ -62,8 +63,17 @@ export const AdminDashboard = () => {
       .catch((err) => {
         console.log(err);
       });
-    
-    
+
+      axios
+      .get("http://localhost:8080/bookings")
+      .then((res) => {
+        setBookings(res.data.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
   };
 
   useEffect(() => {
@@ -80,6 +90,7 @@ export const AdminDashboard = () => {
           <h1><Link to={"/admin/products"}>All Flights</Link></h1>
           <h1><Link to={"/admin/hotels"}>All Hotels</Link></h1>
           <h1><Link to={"/admin/users"}>All Users</Link></h1>
+          <h1><Link to={"/admin/bookings"}>All Bookings</Link></h1>
           <h1><Link to={"/"}>Log out</Link></h1>
         </div>
         <div className="mainBox">
@@ -105,6 +116,11 @@ export const AdminDashboard = () => {
               <h1>Total Users</h1>
               {<h1>{users}</h1>}
               <Link to="/admin/users">View</Link>
+            </div>
+            <div className="dataBx">
+              <h1>Total Bookings</h1>
+              {<h1>{bookings}</h1>}
+              <Link to="/admin/bookings">View</Link>
             </div>
             <div className="dataBx">
               <h1>Giftcards</h1>
