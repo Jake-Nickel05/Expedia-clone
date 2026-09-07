@@ -2,7 +2,7 @@
 import { useState } from "react";
 import React from "react";
 import { Button,} from "@chakra-ui/react";
-import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./homePage.css";
 import styles from "../Stay/Stay.module.css";
 // import SideBar from "./SideBar";
@@ -17,13 +17,20 @@ const initialState = {
 
 export default function Flights() {
   const [PassengerData, setPassengerData] = useState(initialState);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setPassengerData({ ...PassengerData, [e.target.name]: e.target.value });
   };
 
   const handleClick = () => {
-    console.log(PassengerData);
-    setPassengerData(initialState);
+    const params = new URLSearchParams();
+    if (PassengerData.from && PassengerData.from !== "From") {
+      params.set("from", PassengerData.from);
+    }
+    if (PassengerData.to && PassengerData.to !== "To") {
+      params.set("to", PassengerData.to);
+    }
+    navigate(`/flight?${params.toString()}`);
   };
 const swapValuehandler = () => {
     setPassengerData({
@@ -127,12 +134,9 @@ const swapValuehandler = () => {
             className={styles["SearchBtn1"]}
             style={{margin:"auto",}}
             onClick={handleClick}
-            
           >
-            <Link to={{ pathname: '/flight' }}>Search</Link>
-          
+            Search
           </Button >
-            {/* <button >Search</button> */}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
   POST_HOTEL_SUCCESS,
   NEW_GET_HOTELS_SUCCESS,
   DELETE_HOTEL,
+  UPDATE_HOTEL,
 } from "./actionType";
 
 export const getHotelSuccess = (payload) => {
@@ -33,6 +34,10 @@ export const handleDeleteHotel = (payload) => {
   return { type: DELETE_HOTEL, payload };
 };
 
+export const handleUpdateHotel = (payload) => {
+  return { type: UPDATE_HOTEL, payload };
+};
+
 //
 
 export const addHotel = (payload) => (dispatch) => {
@@ -57,6 +62,19 @@ export const fetchingHotels = (limit) => (dispatch) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const updateHotel = (id, payload) => (dispatch) => {
+  dispatch(hotelRequest());
+
+  axios
+    .patch(`http://localhost:8080/hotel/${id}`, payload)
+    .then((res) => {
+      dispatch(handleUpdateHotel(res.data));
+    })
+    .catch((err) => {
+      dispatch(hotelFailure());
     });
 };
 

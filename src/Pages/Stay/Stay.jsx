@@ -12,9 +12,7 @@ function Stay() {
   const [selectedCity, setSelectedCity] = useState("");
   const dispatch = useDispatch();
   const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    console.log(string, results);
+    setSelectedCity(string);
   };
 
   const handleOnHover = (result) => {
@@ -80,10 +78,10 @@ function Stay() {
             size="lg"
             className={styles["SearchBtn1"]}
             style={{margin:"auto",}}
-            
+
           >
-            <Link to={{ pathname: '/stay' }}>Search</Link>
-          
+            <Link to={{ pathname: '/stay', search: `?q=${encodeURIComponent(selectedCity)}` }}>Search</Link>
+
           </Button >
        
       </div>

@@ -6,6 +6,7 @@ import {
   FLIGHT_REQUEST,
   GET_FLIGHT_SUCCESS,
   POST_FLIGHT_SUCCESS,
+  UPDATE_FLIGHT,
 } from "./actionType";
 
 export const getFlightSuccess = (payload) => {
@@ -31,6 +32,10 @@ export const fetch_flights_product = (payload) => {
 //
 export const handleDeleteProduct = (payload) => {
   return { type: DELETE_FLIGHTS, payload };
+};
+
+export const handleUpdateFlight = (payload) => {
+  return { type: UPDATE_FLIGHT, payload };
 };
 
 export const addFlight = (payload) => (dispatch) => {
@@ -59,10 +64,23 @@ export const fetchFlightProducts = (limit) => (dispatch) => {
     });
 };
 
+export const updateFlight = (id, payload) => (dispatch) => {
+  dispatch(flightRequest());
+
+  axios
+    .patch(`http://localhost:8080/flight/${id}`, payload)
+    .then((res) => {
+      dispatch(handleUpdateFlight(res.data));
+    })
+    .catch((err) => {
+      dispatch(flightFailure());
+    });
+};
+
 export const DeleteFlightProducts = (deleteId) => async (dispatch) => {
   try {
-    const res = await axios(
-      `http://localhost:8080/flight?${deleteId}`, //https://makemytrip-api-data.onrender.com/flight/${deleteId}
+    const res = await fetch(
+      `http://localhost:8080/flight/${deleteId}`, //https://makemytrip-api-data.onrender.com/flight/${deleteId}
       {
         method: "DELETE",
         headers: {

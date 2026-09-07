@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./adminProduct.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
@@ -10,6 +10,7 @@ import { DeleteHotel, fetchingHotels } from "../../Redux/AdminHotel/action";
 
 export const AllHotels = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [limit, setLimit] = useState(5);
   const { isLoading, data } = useSelector((store) => {
     return {
@@ -56,6 +57,7 @@ export const AllHotels = () => {
           <h1><Link to={"/admin/adminstay"}>Add Stays</Link></h1>
           <h1><Link to={"/admin/products"}>All Flights</Link></h1>
           <h1><Link to={"/admin/hotels"}>All Hotels</Link></h1>
+          <h1><Link to={"/admin/users"}>All Users</Link></h1>
           <h1><Link to={"/"}>Log out</Link></h1>
 
         </div>
@@ -92,7 +94,7 @@ export const AllHotels = () => {
                 <button onClick={() => handleDeleteHotel(ele.id)}>
                   Delete <i className="fa fa-trash"></i>
                 </button>
-                <button>
+                <button onClick={() => navigate(`/admin/adminstay/${ele.id}`)}>
                   Edit <i className="fa fa-pencil"></i>
                 </button>
               </span>

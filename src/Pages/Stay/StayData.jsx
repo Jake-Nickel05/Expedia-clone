@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useToast, Button as ChakraButton, HStack } from "@chakra-ui/react";
 import "./StayData.css";
@@ -14,16 +14,15 @@ const StayData = () => {
   const checkInDate = useSelector((state) => state.StayReducer.checkInDate);
   const checkOutDate = useSelector((state) => state.StayReducer.checkOutDate);
   const selectedCity = useSelector((state) => state.StayReducer.selectedCity);
-  console.log("city",selectedCity);
-  console.log("In", checkInDate);
-  console.log("out", checkOutDate);
+  const [searchParams] = useSearchParams();
+  const query = (searchParams.get("q") || "").trim().toLowerCase();
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, 10000]);
   const [filteredHotel, setFilteredHotel] = useState([]);
   const [price, setPrice] = useState(""); // Define price state variable
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const totalNumOfPages = Math.ceil(244 / 20); 
+  const totalNumOfPages = Math.ceil(244 / 20);
 
 
   const handlePageChange = (pageNumber) => {
@@ -66,17 +65,17 @@ const StayData = () => {
         data.filter(
           (hotel) =>
             hotel.price >= selectedPriceRange[0] &&
-            hotel.price <= selectedPriceRange[1]
+            hotel.price <= selectedPriceRange[1] &&
+            (!query ||
+              hotel.name?.toLowerCase().includes(query) ||
+              hotel.place?.toLowerCase().includes(query))
         )
       );
-      console.log(filteredHotel);
     }
-  }, [data, selectedPriceRange]);
-
-console.log(data)
+  }, [data, selectedPriceRange, query]);
   return (
     <div className="stay-data">
-      
+
       <div className="sidebar-container">
         <Sidebar/>
       </div>
