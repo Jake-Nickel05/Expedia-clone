@@ -60,33 +60,41 @@ export const Register = () => {
     window.location = "/login";
   };
 
-  // oonCapture
-  function onCapture() {
-    window.recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container",
-      {
-        size: "invisible",
-        callback: (response) => {
-          handleVerifyNumber();
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          // ...
+  // Set up the invisible reCAPTCHA once when the page loads, instead of
+  // re-creating it on every click. Re-creating it in the same container
+  // (the old onCapture(), called from inside handleVerifyNumber) throws
+  // "reCAPTCHA has already been rendered in this element" on the second
+  // attempt, which left the button stuck on "Please wait...".
+  useEffect(() => {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible",
         },
-      },
-      auth
-    );
-  }
+        auth
+      );
+    }
+  }, []);
 
   //   Verify button
   function handleVerifyNumber() {
-    document.querySelector("#nextButton").innerText = "Please wait...";
-    onCapture();
-    const phoneNumber = `+91${number}`;
+    const nextButton = document.querySelector("#nextButton");
+    nextButton.innerText = "Please wait...";
+
+    // NOTE: was hardcoded to "+91" (India) before, which rejected US-style
+    // numbers with an invalid-phone-number error that the old empty catch
+    // block never surfaced. Update this if your team is testing with a
+    // different country's numbers.
+    const phoneNumber = `+1${number}`;
     const appVerifier = window.recaptchaVerifier;
+
     if (number.length === 10) {
       if (exist) {
         document.querySelector("#loginMesageError").innerHTML =
           "User Alredy exist";
         document.querySelector("#loginMesageSuccess").innerHTML = ``;
+        nextButton.innerText = "Next";
       } else {
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
           .then((confirmationResult) => {
@@ -99,19 +107,22 @@ export const Register = () => {
             ).innerHTML = `Otp Send To ${number} !`;
             document.querySelector("#loginMesageError").innerHTML = "";
             document.querySelector("#nextButton").style.display = "none";
-            // ...
           })
           .catch((error) => {
-            // Error; SMS not sent
-            // document.querySelector("#nextButton").innerText = 'Server Error'
-            // ...
+            // Error; SMS not sent. Reset the button and show the real reason
+            // instead of hanging on "Please wait..." forever.
+            console.error("signInWithPhoneNumber failed:", error);
+            nextButton.innerText = "Next";
+            document.querySelector("#loginMesageSuccess").innerHTML = "";
+            document.querySelector("#loginMesageError").innerHTML =
+              "Failed to send OTP: " + error.message;
           });
       }
-      //
     } else {
       document.querySelector("#loginMesageSuccess").innerHTML = ``;
       document.querySelector("#loginMesageError").innerHTML =
         "Mobile Number is Invalid !";
+      nextButton.innerText = "Next";
     }
   }
 

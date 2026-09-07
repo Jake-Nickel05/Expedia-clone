@@ -1,20 +1,23 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBlKHCdVfQvMRKQf2B5UqaLfDkwm6T1apo",
-  authDomain: "challo-ghume-fa22c.firebaseapp.com",
-  projectId: "challo-ghume-fa22c",
-  storageBucket: "challo-ghume-fa22c.appspot.com",
-  messagingSenderId: "411994731743",
-  appId: "1:411994731743:web:a02cec85eb6aa66ddbe56a",
-  measurementId: "G-5KYMV9KZ2D"
+  apiKey: "AIzaSyAliGSsi91GmK4A11pMVsoLrOHm1VM6GYM",
+  authDomain: "spmassignment1-d99e1.firebaseapp.com",
+  projectId: "spmassignment1-d99e1",
+  storageBucket: "spmassignment1-d99e1.firebasestorage.app",
+  messagingSenderId: "395517179521",
+  appId: "1:395517179521:web:c548618b2a8f5f65e63f80",
+  measurementId: "G-H0ZFRNJGVF"
 };
 
 // Initialize Firebase
 const firebase_app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(firebase_app);
 
-export default firebase_app
+export default firebase_app;
+export { analytics };
