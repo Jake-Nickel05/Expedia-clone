@@ -206,7 +206,7 @@
       "to": "MUMBAI",
       "departure": "04:20",
       "arrival": "07:15",
-      "price": "6999",
+      "price": 6998,
       "totalTime": "02h 55m",
       "id": 1
     },
@@ -440,6 +440,39 @@
       "price": 4210,
       "totalTime": "2h : 00",
       "id": 22
+    },
+    {
+      "airline": "Spirit",
+      "number": "1234",
+      "from": "Iowa",
+      "to": "New York",
+      "departure": "122345",
+      "arrival": "12345",
+      "price": 11111,
+      "totalTime": "4",
+      "id": 23
+    },
+    {
+      "airline": "Spirit",
+      "number": "1234",
+      "from": "Iowa",
+      "to": "New York",
+      "departure": "122345",
+      "arrival": "12345",
+      "price": 11111,
+      "totalTime": "4",
+      "id": 24
+    },
+    {
+      "airline": "AirIndia",
+      "number": "6E 2054",
+      "from": "DELHI",
+      "to": "MUMBAI",
+      "departure": "6E 2054",
+      "arrival": "123456",
+      "price": 8998,
+      "totalTime": "02h 55m",
+      "id": 25
     }
   ],
   "giftcards": [

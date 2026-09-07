@@ -98,7 +98,7 @@ export const AdminDashboard = () => {
             <div className="dataBx">
               <h1>Total Flights</h1>
               {<h1>{flight}</h1>}
-              <Link to="/admin/flights">View</Link>
+              <Link to="/admin/products">View</Link>
             </div>
             <div className="dataBx">
               <h1>Total Users</h1>

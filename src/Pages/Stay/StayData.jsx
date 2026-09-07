@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { DeleteHotel, fetchingHotels } from "../../Redux/StayReducer/action";
 import "./StayData.css";
 import PriceFilter from "./PriceFilter";
@@ -9,12 +10,8 @@ import Pagination from "./Pagination";
 const StayData = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((store) => store.StayReducer);
-  const checkInDate = useSelector((state) => state.StayReducer.checkInDate);
-  const checkOutDate = useSelector((state) => state.StayReducer.checkOutDate);
-  const selectedCity = useSelector((state) => state.StayReducer.selectedCity);
-  console.log("city",selectedCity);
-  console.log("In", checkInDate);
-  console.log("out", checkOutDate);
+  const [searchParams] = useSearchParams();
+  const query = (searchParams.get("q") || "").trim().toLowerCase();
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, 10000]);
   const [filteredHotel, setFilteredHotel] = useState([]);
   const [price, setPrice] = useState(""); // Define price state variable
@@ -42,14 +39,14 @@ const StayData = () => {
         data.filter(
           (hotel) =>
             hotel.price >= selectedPriceRange[0] &&
-            hotel.price <= selectedPriceRange[1]
+            hotel.price <= selectedPriceRange[1] &&
+            (!query ||
+              hotel.name?.toLowerCase().includes(query) ||
+              hotel.place?.toLowerCase().includes(query))
         )
       );
-      console.log(filteredHotel);
     }
-  }, [data, selectedPriceRange]);
-
-console.log(data)
+  }, [data, selectedPriceRange, query]);
   return (
     <div className="stay-data">
       

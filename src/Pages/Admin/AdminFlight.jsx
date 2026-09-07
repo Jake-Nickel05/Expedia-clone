@@ -1,9 +1,10 @@
 import "./Admin.Module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { useDispatch } from "react-redux";
-import { addFlight } from "../../Redux/AdminFlights/action";
-import { Link } from "react-router-dom";
+import { addFlight, updateFlight } from "../../Redux/AdminFlights/action";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 let initialState = {
   airline: "",
@@ -18,6 +19,39 @@ let initialState = {
 export const Admin = () => {
   const [flight, setFlight] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const isEditMode = Boolean(id);
+
+  useEffect(() => {
+    if (isEditMode) {
+      axios.get(`http://localhost:8080/flight/${id}`).then((res) => {
+        const {
+          airline,
+          number,
+          from,
+          to,
+          departure,
+          arrival,
+          price,
+          totalTime,
+        } = res.data;
+        setFlight({
+          airline,
+          number,
+          from,
+          to,
+          departure,
+          arrival,
+          price,
+          totalTime,
+        });
+      });
+    } else {
+      setFlight(initialState);
+    }
+  }, [id]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -27,9 +61,13 @@ export const Admin = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(flight);
-    dispatch(addFlight(flight));
+    if (isEditMode) {
+      dispatch(updateFlight(id, flight));
+    } else {
+      dispatch(addFlight(flight));
+    }
     setFlight(initialState);
+    navigate("/admin/products");
   };
   return (
     <>
@@ -45,7 +83,7 @@ export const Admin = () => {
         </div>
         <div className="adminFlightBox">
           <div className="adminHead">
-            <h2>Admin Panel for Flights</h2>
+            <h2>{isEditMode ? "Edit Flight" : "Admin Panel for Flights"}</h2>
           </div>
 
           <div className="adminFlightInputs">
@@ -136,7 +174,7 @@ export const Admin = () => {
               </div>
               <div className="adminFlightInputBx">
                 <span></span>
-                <button>Add Flight Info</button>
+                <button>{isEditMode ? "Update Flight Info" : "Add Flight Info"}</button>
               </div>
             </form>
           </div>

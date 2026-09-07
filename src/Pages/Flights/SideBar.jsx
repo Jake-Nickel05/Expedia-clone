@@ -13,7 +13,7 @@ import FlightList from "./FlightList";
 import { useState } from "react";
 
 const SideBar = () => {
-  const [priceValue, setPriceValue] = useState(8);
+  const [priceBucket, setPriceBucket] = useState("");
   const [classes, setClasses] = useState("");
   const [page, setPage] = useState(1);
   const [Packaging, setpackaging] = useState("");
@@ -53,7 +53,7 @@ const SideBar = () => {
             <Heading as="h5" size="sm" m="3">
               Price Per Trip
             </Heading>
-            <RadioGroup onChange={setPriceValue} value={priceValue}>
+            <RadioGroup onChange={setPriceBucket} value={priceBucket}>
               <Stack direction="column">
                 <Radio value="5">₹ 4000 - ₹ 5000</Radio>
                 <Radio value="6">₹ 5000 - ₹ 6000</Radio>
@@ -127,7 +127,14 @@ const SideBar = () => {
               </Stack>
           {/* Pagination Part UI End */}
 
-          <FlightList page={page} priceValue={priceValue} />
+          <FlightList
+            page={page}
+            priceRange={
+              priceBucket
+                ? { gte: (Number(priceBucket) - 1) * 1000, lte: Number(priceBucket) * 1000 }
+                : null
+            }
+          />
         </Box>
       </Box>
   );

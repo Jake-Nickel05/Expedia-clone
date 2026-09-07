@@ -21,7 +21,9 @@ export const AllRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/adminflight" element={<Admin />} />
+            <Route path="/admin/adminflight/:id" element={<Admin />} />
             <Route path="/admin/adminstay" element={<AdminStay />} />
+            <Route path="/admin/adminstay/:id" element={<AdminStay />} />
             <Route path="/admin/products" element={<AdminProducts />} />
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./adminProduct.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
@@ -12,6 +12,7 @@ import {
 
 export const AdminProducts = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [limit, setLimit] = useState(5);
   const { isLoading, data } = useSelector((store) => {
     return {
@@ -81,7 +82,7 @@ export const AdminProducts = () => {
                 <button onClick={() => handleDeleteFlights(ele.id)}>
                   Delete <i className="fa fa-trash"></i>
                 </button>
-                <button>
+                <button onClick={() => navigate(`/admin/adminflight/${ele.id}`)}>
                   Edit <i className="fa fa-pencil"></i>
                 </button>
               </span>

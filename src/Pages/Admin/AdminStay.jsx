@@ -1,7 +1,8 @@
 import "./Admin.Module.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { addHotel } from "../../Redux/AdminHotel/action";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { addHotel, updateHotel } from "../../Redux/AdminHotel/action";
 import { useDispatch } from "react-redux";
 
 let initialState = {
@@ -15,6 +16,22 @@ let initialState = {
 export const AdminStay = () => {
   const [hotel, setHotel] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const isEditMode = Boolean(id);
+
+  useEffect(() => {
+    if (isEditMode) {
+      axios.get(`http://localhost:8080/hotel/${id}`).then((res) => {
+        const { image, name, place, price, description, additional } =
+          res.data;
+        setHotel({ image, name, place, price, description, additional });
+      });
+    } else {
+      setHotel(initialState);
+    }
+  }, [id]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -24,9 +41,13 @@ export const AdminStay = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(hotel);
-    dispatch(addHotel(hotel));
+    if (isEditMode) {
+      dispatch(updateHotel(id, hotel));
+    } else {
+      dispatch(addHotel(hotel));
+    }
     setHotel(initialState);
+    navigate("/admin/hotels");
   };
 
   return (
@@ -43,7 +64,7 @@ export const AdminStay = () => {
         </div>
         <div className="adminFlightBox">
           <div className="adminHead">
-            <h2>Admin Panel for Hotel</h2>
+            <h2>{isEditMode ? "Edit Hotel" : "Admin Panel for Hotel"}</h2>
           </div>
 
           <div className="adminFlightInputs">
@@ -111,7 +132,7 @@ export const AdminStay = () => {
 
               <div className="adminFlightInputBx">
                 <span></span>
-                <button>Add Hotel</button>
+                <button>{isEditMode ? "Update Hotel" : "Add Hotel"}</button>
               </div>
             </form>
           </div>

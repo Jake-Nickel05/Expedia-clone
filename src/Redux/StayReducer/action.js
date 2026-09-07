@@ -48,7 +48,7 @@ export const addHotel = (payload) => (dispatch) => {
   dispatch(hotelRequest());
 
   axios
-    .post("https://happy-sunglasses-eel.cyclic.app/hotel", payload) 
+    .post("http://localhost:8080/hotel", payload)
     .then(() => {
       dispatch(postHotelSuccess());
     })
@@ -57,15 +57,13 @@ export const addHotel = (payload) => (dispatch) => {
     });
 };
 
-//https://happy-sunglasses-eel.cyclic.app/hotel?_sort=asc&_order=price&page=1&_limit=20
 export const fetchingHotels = (sort, order, page) => async (dispatch) => {
-  console.log(order, sort,page);
   dispatch({ type: HOTEL_REQUEST });
   try {
-    const res = await axios.get(
-      `https://happy-sunglasses-eel.cyclic.app/hotel?_sort=${sort}&_order=${order}&_page=${page}&_limit=20`
-    );
-    console.log(res.data);
+    let url = `http://localhost:8080/hotel?_limit=20`;
+    if (sort) url += `&_sort=${sort}&_order=${order}`;
+    if (page) url += `&_page=${page}`;
+    const res = await axios.get(url);
     dispatch({ type: GET_HOTEL_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch({ type: HOTEL_FAILURE });
@@ -81,17 +79,12 @@ export const fetchingHotels = (sort, order, page) => async (dispatch) => {
 
 export const DeleteHotel = (deleteId) => async (dispatch) => {
   try {
-    const res = await fetch(
-      `https://happy-sunglasses-eel.cyclic.app/hotel/${deleteId}`, 
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    let data = await res.json();
-    console.log(data);
+    await fetch(`http://localhost:8080/hotel/${deleteId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     dispatch(handleDeleteHotel(deleteId));
   } catch (e) {
     console.log(e);
