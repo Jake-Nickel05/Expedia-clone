@@ -21,6 +21,10 @@ import CheckoutPage from "./CheckoutPage";
 import FlightData from "./Flights/FlightData";
 import FlightDetails from "./Flights/FlightDetails";
 import Cart from "./Cart";
+import CarData from "./Cars/CarData";
+import CarDetails from "./Cars/CarDetails";
+import PackageData from "./Packages/PackageData";
+import PackageDetails from "./Packages/PackageDetails";
 
 export const AllRoutes = () => {
     return (
@@ -47,6 +51,10 @@ export const AllRoutes = () => {
             <Route path="/flight" element={<FlightData />} />
             <Route path="/flight/:id" element={<FlightDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/cars" element={<CarData />} />
+            <Route path="/cars/:id" element={<CarDetails />} />
+            <Route path="/packages" element={<PackageData />} />
+            <Route path="/packages/:id" element={<PackageDetails />} />
             
             <Route path="/checkout" element={<CheckoutPage/>} ></Route>
           </Routes>

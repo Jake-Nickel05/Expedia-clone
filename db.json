@@ -139,6 +139,25 @@
       "additional2": "",
       "additional1": "",
       "id": 2
+    },
+    {
+      "image": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bb876932053a11eaac360242ac110002.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+      "img1": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bb876932053a11eaac360242ac110002.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+      "img2": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bc663e50053a11eaab9e0242ac110003.jpg?&output-quality=75&downsize=583:388&crop=583:388;2,0&output-format=jpg",
+      "img3": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-240b8736053b11eaae9e0242ac110005.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+      "img4": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-612cbd56053b11eab7ff0242ac110005.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+      "rating": 3.9,
+      "ratingtext": "Very Good",
+      "ratingcomment": "Based on  Ratings and  reviews",
+      "name": "Hotel Arafa Inn",
+      "place": "Gandhi Nagar",
+      "description": "",
+      "additional": "",
+      "taxes": 373,
+      "price": 2300,
+      "additional2": "",
+      "additional1": "",
+      "id": 4
     }
   ],
   "flightcart": [
@@ -196,6 +215,28 @@
       "price": "7999",
       "totalTime": "02h 55m",
       "id": 7
+    },
+    {
+      "airline": "Vistara",
+      "number": "6E 2054",
+      "from": "MUMBAI",
+      "to": "BANGLURU",
+      "departure": "04:20",
+      "arrival": "07:15",
+      "price": "6999",
+      "totalTime": "02h 55m",
+      "id": 16
+    },
+    {
+      "airline": "GoAir",
+      "number": "6E 2054",
+      "from": "MUMBAI",
+      "to": "BANGLURU",
+      "departure": "06:20",
+      "arrival": "09:15",
+      "price": "7999",
+      "totalTime": "02h 55m",
+      "id": 17
     }
   ],
   "flight": [
@@ -5342,6 +5383,667 @@
       "taxes": 630,
       "total": 7629,
       "bookedAt": "2026-09-07T21:56:23.646Z",
+      "id": 1
+    },
+    {
+      "guestFirstName": "Shubam",
+      "guestSurname": "Chaudhari",
+      "guestMobile": "3322734407",
+      "userNumber": "3322734407",
+      "hotels": [
+        {
+          "image": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bb876932053a11eaac360242ac110002.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+          "img1": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bb876932053a11eaac360242ac110002.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+          "img2": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-bc663e50053a11eaab9e0242ac110003.jpg?&output-quality=75&downsize=583:388&crop=583:388;2,0&output-format=jpg",
+          "img3": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-240b8736053b11eaae9e0242ac110005.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+          "img4": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201911121625076463-612cbd56053b11eab7ff0242ac110005.jpg?&output-quality=75&downsize=583:388&output-format=jpg",
+          "rating": 3.9,
+          "ratingtext": "Very Good",
+          "ratingcomment": "Based on  Ratings and  reviews",
+          "name": "Hotel Arafa Inn",
+          "place": "Gandhi Nagar",
+          "description": "",
+          "additional": "",
+          "taxes": 373,
+          "price": 2300,
+          "additional2": "",
+          "additional1": "",
+          "id": 4
+        }
+      ],
+      "flights": [],
+      "cars": [],
+      "packages": [],
+      "subtotal": 2300,
+      "taxes": 207,
+      "total": 2507,
+      "bookedAt": "2026-09-08T17:51:22.817Z",
+      "id": 2
+    },
+    {
+      "guestFirstName": "s",
+      "guestSurname": "c",
+      "guestMobile": "1",
+      "userNumber": "3322734407",
+      "hotels": [],
+      "flights": [
+        {
+          "airline": "IndiGo",
+          "number": "6E 2054",
+          "from": "MUMBAI",
+          "to": "BANGLURU",
+          "departure": "02:20",
+          "arrival": "04:15",
+          "price": "5999",
+          "totalTime": "02h 55m",
+          "id": 18
+        }
+      ],
+      "cars": [],
+      "packages": [],
+      "subtotal": 5999,
+      "taxes": 540,
+      "total": 6539,
+      "bookedAt": "2026-09-08T17:51:54.337Z",
+      "id": 3
+    },
+    {
+      "guestFirstName": "s",
+      "guestSurname": "c",
+      "guestMobile": "23",
+      "userNumber": "3322734407",
+      "hotels": [],
+      "flights": [
+        {
+          "airline": "Vistara",
+          "number": "6E 2054",
+          "from": "DELHI",
+          "to": "MUMBAI",
+          "departure": "04:20",
+          "arrival": "07:15",
+          "price": 6998,
+          "totalTime": "02h 55m",
+          "id": 1
+        }
+      ],
+      "cars": [],
+      "packages": [],
+      "subtotal": 6998,
+      "taxes": 630,
+      "total": 7628,
+      "bookedAt": "2026-09-08T18:25:16.810Z",
+      "id": 4
+    }
+  ],
+  "car": [
+    {
+      "id": 1,
+      "brand": "Maruti Suzuki",
+      "model": "Swift",
+      "type": "Hatchback",
+      "seats": 4,
+      "transmission": "Manual",
+      "fuelType": "Petrol",
+      "location": "DELHI",
+      "pricePerDay": 1500,
+      "rating": 4.3,
+      "image": "https://picsum.photos/seed/car1/500/320",
+      "description": "A compact, fuel-efficient hatchback, perfect for city driving."
+    },
+    {
+      "id": 2,
+      "brand": "Hyundai",
+      "model": "i20",
+      "type": "Hatchback",
+      "seats": 4,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "MUMBAI",
+      "pricePerDay": 1800,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/car2/500/320",
+      "description": "Comfortable hatchback with a smooth automatic transmission."
+    },
+    {
+      "id": 3,
+      "brand": "Honda",
+      "model": "City",
+      "type": "Sedan",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "BANGLURU",
+      "pricePerDay": 2600,
+      "rating": 4.6,
+      "image": "https://picsum.photos/seed/car3/500/320",
+      "description": "A spacious, reliable sedan ideal for business travel."
+    },
+    {
+      "id": 4,
+      "brand": "Maruti Suzuki",
+      "model": "Dzire",
+      "type": "Sedan",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuelType": "Petrol",
+      "location": "PUNE",
+      "pricePerDay": 2000,
+      "rating": 4.2,
+      "image": "https://picsum.photos/seed/car4/500/320",
+      "description": "Budget-friendly sedan with great mileage."
+    },
+    {
+      "id": 5,
+      "brand": "Toyota",
+      "model": "Innova Crysta",
+      "type": "SUV",
+      "seats": 7,
+      "transmission": "Automatic",
+      "fuelType": "Diesel",
+      "location": "DELHI",
+      "pricePerDay": 4200,
+      "rating": 4.8,
+      "image": "https://picsum.photos/seed/car5/500/320",
+      "description": "Spacious 7-seater SUV, great for family trips and group travel."
+    },
+    {
+      "id": 6,
+      "brand": "Mahindra",
+      "model": "XUV700",
+      "type": "SUV",
+      "seats": 7,
+      "transmission": "Automatic",
+      "fuelType": "Diesel",
+      "location": "MUMBAI",
+      "pricePerDay": 4500,
+      "rating": 4.7,
+      "image": "https://picsum.photos/seed/car6/500/320",
+      "description": "Feature-loaded SUV with plenty of power and comfort."
+    },
+    {
+      "id": 7,
+      "brand": "Hyundai",
+      "model": "Creta",
+      "type": "SUV",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "BANGLURU",
+      "pricePerDay": 3600,
+      "rating": 4.5,
+      "image": "https://picsum.photos/seed/car7/500/320",
+      "description": "Popular compact SUV with a comfortable ride."
+    },
+    {
+      "id": 8,
+      "brand": "Kia",
+      "model": "Seltos",
+      "type": "SUV",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuelType": "Diesel",
+      "location": "PUNE",
+      "pricePerDay": 3400,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/car8/500/320",
+      "description": "Stylish SUV with strong diesel performance."
+    },
+    {
+      "id": 9,
+      "brand": "Mercedes-Benz",
+      "model": "E-Class",
+      "type": "Luxury",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "DELHI",
+      "pricePerDay": 9500,
+      "rating": 4.9,
+      "image": "https://picsum.photos/seed/car9/500/320",
+      "description": "Premium luxury sedan for special occasions and executive travel."
+    },
+    {
+      "id": 10,
+      "brand": "BMW",
+      "model": "5 Series",
+      "type": "Luxury",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "MUMBAI",
+      "pricePerDay": 9800,
+      "rating": 4.9,
+      "image": "https://picsum.photos/seed/car10/500/320",
+      "description": "German engineering with top-tier comfort and performance."
+    },
+    {
+      "id": 11,
+      "brand": "Audi",
+      "model": "A6",
+      "type": "Luxury",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Diesel",
+      "location": "BANGLURU",
+      "pricePerDay": 9200,
+      "rating": 4.8,
+      "image": "https://picsum.photos/seed/car11/500/320",
+      "description": "Elegant luxury sedan with a refined cabin."
+    },
+    {
+      "id": 12,
+      "brand": "Maruti Suzuki",
+      "model": "Ertiga",
+      "type": "MUV",
+      "seats": 7,
+      "transmission": "Manual",
+      "fuelType": "Petrol",
+      "location": "PUNE",
+      "pricePerDay": 2800,
+      "rating": 4.3,
+      "image": "https://picsum.photos/seed/car12/500/320",
+      "description": "Practical 7-seater for larger groups on a budget."
+    },
+    {
+      "id": 13,
+      "brand": "Renault",
+      "model": "Kwid",
+      "type": "Hatchback",
+      "seats": 4,
+      "transmission": "Manual",
+      "fuelType": "Petrol",
+      "location": "DELHI",
+      "pricePerDay": 1300,
+      "rating": 4,
+      "image": "https://picsum.photos/seed/car13/500/320",
+      "description": "Compact and easy to park, great for solo travelers."
+    },
+    {
+      "id": 14,
+      "brand": "Tata",
+      "model": "Nexon",
+      "type": "SUV",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Electric",
+      "location": "MUMBAI",
+      "pricePerDay": 3800,
+      "rating": 4.5,
+      "image": "https://picsum.photos/seed/car14/500/320",
+      "description": "Electric SUV with zero emissions and a smooth, quiet ride."
+    },
+    {
+      "id": 15,
+      "brand": "Volkswagen",
+      "model": "Virtus",
+      "type": "Sedan",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "BANGLURU",
+      "pricePerDay": 2700,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/car15/500/320",
+      "description": "German-engineered sedan with confident handling."
+    },
+    {
+      "id": 16,
+      "brand": "Mahindra",
+      "model": "Thar",
+      "type": "SUV",
+      "seats": 4,
+      "transmission": "Manual",
+      "fuelType": "Diesel",
+      "location": "RAJASTHAN",
+      "pricePerDay": 3900,
+      "rating": 4.6,
+      "image": "https://picsum.photos/seed/car16/500/320",
+      "description": "Rugged off-roader, perfect for desert and hill terrain."
+    },
+    {
+      "id": 17,
+      "brand": "Toyota",
+      "model": "Fortuner",
+      "type": "SUV",
+      "seats": 7,
+      "transmission": "Automatic",
+      "fuelType": "Diesel",
+      "location": "DELHI",
+      "pricePerDay": 6500,
+      "rating": 4.8,
+      "image": "https://picsum.photos/seed/car17/500/320",
+      "description": "Bold, powerful SUV built for long highway drives."
+    },
+    {
+      "id": 18,
+      "brand": "Honda",
+      "model": "Amaze",
+      "type": "Sedan",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuelType": "Petrol",
+      "location": "PUNE",
+      "pricePerDay": 1900,
+      "rating": 4.2,
+      "image": "https://picsum.photos/seed/car18/500/320",
+      "description": "Compact sedan with a surprisingly roomy cabin."
+    },
+    {
+      "id": 19,
+      "brand": "Jeep",
+      "model": "Compass",
+      "type": "SUV",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Diesel",
+      "location": "MUMBAI",
+      "pricePerDay": 4800,
+      "rating": 4.5,
+      "image": "https://picsum.photos/seed/car19/500/320",
+      "description": "Capable SUV with a premium interior and strong build quality."
+    },
+    {
+      "id": 20,
+      "brand": "Skoda",
+      "model": "Slavia",
+      "type": "Sedan",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "BANGLURU",
+      "pricePerDay": 2900,
+      "rating": 4.3,
+      "image": "https://picsum.photos/seed/car20/500/320",
+      "description": "European sedan with sharp handling and solid safety ratings."
+    }
+  ],
+  "package": [
+    {
+      "id": 1,
+      "title": "Golden Triangle Tour",
+      "destination": "Delhi - Agra - Jaipur",
+      "nights": 4,
+      "duration": "5 Days / 4 Nights",
+      "price": 24999,
+      "rating": 4.7,
+      "image": "https://picsum.photos/seed/pkg1/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Sightseeing",
+        "AC Transport"
+      ],
+      "description": "India's classic circuit: the Taj Mahal at sunrise, Jaipur's forts, and Delhi's monuments."
+    },
+    {
+      "id": 2,
+      "title": "Kerala Backwaters Escape",
+      "destination": "Kochi - Alleppey - Munnar",
+      "nights": 5,
+      "duration": "6 Days / 5 Nights",
+      "price": 32999,
+      "rating": 4.8,
+      "image": "https://picsum.photos/seed/pkg2/500/320",
+      "inclusions": [
+        "Houseboat Stay",
+        "All Meals",
+        "Tea Plantation Tour",
+        "Airport Transfers"
+      ],
+      "description": "Cruise through tranquil backwaters and unwind in the misty hills of Munnar."
+    },
+    {
+      "id": 3,
+      "title": "Goa Beach Getaway",
+      "destination": "North & South Goa",
+      "nights": 3,
+      "duration": "4 Days / 3 Nights",
+      "price": 15999,
+      "rating": 4.5,
+      "image": "https://picsum.photos/seed/pkg3/500/320",
+      "inclusions": [
+        "Beach Resort",
+        "Breakfast",
+        "Water Sports",
+        "Sunset Cruise"
+      ],
+      "description": "Sun, sand, and nightlife across Goa's most iconic beaches."
+    },
+    {
+      "id": 4,
+      "title": "Rajasthan Royal Heritage",
+      "destination": "Udaipur - Jodhpur - Jaisalmer",
+      "nights": 6,
+      "duration": "7 Days / 6 Nights",
+      "price": 45999,
+      "rating": 4.9,
+      "image": "https://picsum.photos/seed/pkg4/500/320",
+      "inclusions": [
+        "Heritage Hotel",
+        "All Meals",
+        "Desert Safari",
+        "Camel Ride"
+      ],
+      "description": "Palaces, forts, and the Thar desert — royal Rajasthan in full."
+    },
+    {
+      "id": 5,
+      "title": "Himalayan Adventure",
+      "destination": "Manali - Kasol - Spiti",
+      "nights": 7,
+      "duration": "8 Days / 7 Nights",
+      "price": 38999,
+      "rating": 4.7,
+      "image": "https://picsum.photos/seed/pkg5/500/320",
+      "inclusions": [
+        "Hotel & Camping",
+        "Breakfast & Dinner",
+        "Trekking Guide",
+        "Transport"
+      ],
+      "description": "High-altitude valleys, river-side camps, and mountain trails."
+    },
+    {
+      "id": 6,
+      "title": "Andaman Island Retreat",
+      "destination": "Port Blair - Havelock - Neil Island",
+      "nights": 5,
+      "duration": "6 Days / 5 Nights",
+      "price": 41999,
+      "rating": 4.8,
+      "image": "https://picsum.photos/seed/pkg6/500/320",
+      "inclusions": [
+        "Beach Resort",
+        "All Meals",
+        "Scuba Diving",
+        "Ferry Transfers"
+      ],
+      "description": "Turquoise waters, coral reefs, and untouched island beaches."
+    },
+    {
+      "id": 7,
+      "title": "Varanasi Spiritual Journey",
+      "destination": "Varanasi - Sarnath",
+      "nights": 2,
+      "duration": "3 Days / 2 Nights",
+      "price": 12999,
+      "rating": 4.6,
+      "image": "https://picsum.photos/seed/pkg7/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Ganga Aarti Tour",
+        "Boat Ride"
+      ],
+      "description": "Witness the sacred rituals along the ghats of the Ganges."
+    },
+    {
+      "id": 8,
+      "title": "Northeast Explorer",
+      "destination": "Shillong - Cherrapunji - Kaziranga",
+      "nights": 6,
+      "duration": "7 Days / 6 Nights",
+      "price": 36999,
+      "rating": 4.6,
+      "image": "https://picsum.photos/seed/pkg8/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Wildlife Safari",
+        "Local Guide"
+      ],
+      "description": "Living root bridges, waterfalls, and one-horned rhinos in the wild."
+    },
+    {
+      "id": 9,
+      "title": "Ladakh Road Trip",
+      "destination": "Leh - Nubra Valley - Pangong Lake",
+      "nights": 7,
+      "duration": "8 Days / 7 Nights",
+      "price": 49999,
+      "rating": 4.9,
+      "image": "https://picsum.photos/seed/pkg9/500/320",
+      "inclusions": [
+        "Hotel & Camps",
+        "All Meals",
+        "Inner Line Permits",
+        "SUV Transport"
+      ],
+      "description": "High mountain passes, monasteries, and the famous blue lake."
+    },
+    {
+      "id": 10,
+      "title": "Mysore Heritage Weekend",
+      "destination": "Mysore - Coorg",
+      "nights": 2,
+      "duration": "3 Days / 2 Nights",
+      "price": 13999,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/pkg10/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Palace Tour",
+        "Coffee Plantation Visit"
+      ],
+      "description": "Regal palaces followed by misty coffee estates."
+    },
+    {
+      "id": 11,
+      "title": "Mumbai City Highlights",
+      "destination": "Mumbai",
+      "nights": 1,
+      "duration": "2 Days / 1 Night",
+      "price": 8999,
+      "rating": 4.2,
+      "image": "https://picsum.photos/seed/pkg11/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "City Tour",
+        "Airport Transfers"
+      ],
+      "description": "A quick tour of the Gateway of India, Marine Drive, and Bollywood studios."
+    },
+    {
+      "id": 12,
+      "title": "Rishikesh Adventure Camp",
+      "destination": "Rishikesh",
+      "nights": 2,
+      "duration": "3 Days / 2 Nights",
+      "price": 10999,
+      "rating": 4.5,
+      "image": "https://picsum.photos/seed/pkg12/500/320",
+      "inclusions": [
+        "Riverside Camp",
+        "All Meals",
+        "River Rafting",
+        "Yoga Session"
+      ],
+      "description": "White-water rafting by day, riverside bonfires by night."
+    },
+    {
+      "id": 13,
+      "title": "Darjeeling Tea Trails",
+      "destination": "Darjeeling - Gangtok",
+      "nights": 4,
+      "duration": "5 Days / 4 Nights",
+      "price": 27999,
+      "rating": 4.6,
+      "image": "https://picsum.photos/seed/pkg13/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Tea Garden Tour",
+        "Toy Train Ride"
+      ],
+      "description": "Himalayan views, tea estates, and the iconic Darjeeling toy train."
+    },
+    {
+      "id": 14,
+      "title": "Hampi Heritage Trail",
+      "destination": "Hampi",
+      "nights": 1,
+      "duration": "2 Days / 1 Night",
+      "price": 7999,
+      "rating": 4.3,
+      "image": "https://picsum.photos/seed/pkg14/500/320",
+      "inclusions": [
+        "Hotel",
+        "Breakfast",
+        "Ruins Guided Tour"
+      ],
+      "description": "Explore the ancient ruins of the Vijayanagara Empire."
+    },
+    {
+      "id": 15,
+      "title": "Pondicherry French Quarter",
+      "destination": "Pondicherry",
+      "nights": 2,
+      "duration": "3 Days / 2 Nights",
+      "price": 11999,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/pkg15/500/320",
+      "inclusions": [
+        "Boutique Hotel",
+        "Breakfast",
+        "Heritage Walk",
+        "Beach Visit"
+      ],
+      "description": "Colonial architecture, cafes, and a laid-back seaside vibe."
+    }
+  ],
+  "carcart": [
+    {
+      "brand": "Test",
+      "model": "Car",
+      "pricePerDay": 2000,
+      "location": "DELHI",
+      "type": "SUV",
+      "image": "x",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "brand": "Hyundai",
+      "model": "i20",
+      "type": "Hatchback",
+      "seats": 4,
+      "transmission": "Automatic",
+      "fuelType": "Petrol",
+      "location": "MUMBAI",
+      "pricePerDay": 1800,
+      "rating": 4.4,
+      "image": "https://picsum.photos/seed/car2/500/320",
+      "description": "Comfortable hatchback with a smooth automatic transmission."
+    }
+  ],
+  "packagecart": [
+    {
+      "title": "Test Package",
+      "destination": "Testland",
+      "price": 5000,
+      "image": "x",
       "id": 1
     }
   ]

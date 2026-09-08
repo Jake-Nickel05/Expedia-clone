@@ -5,14 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { clearCartItems } from "../Redux/CartReducer/action";
 
+// Cars are priced per day (pricePerDay) instead of a flat price field like
+// hotels/flights/packages, so pull whichever field the item actually has.
+const priceOf = (item) => Number(item.price ?? item.pricePerDay ?? 0);
+
 const CheckoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { activeUser } = useSelector((store) => store.LoginReducer);
 
-  // Coming from a hotel/flight "Book Now" button: { type: 'hotel'|'flight', items: [one item] }
-  // Coming from the Cart's "Proceed to Checkout": { type: 'cart', hotelItems, flightItems }
+  // Coming from a hotel/flight/car/package "Book Now" button:
+  //   { type: 'hotel'|'flight'|'car'|'package', items: [one item] }
+  // Coming from the Cart's "Proceed to Checkout":
+  //   { type: 'cart', hotelItems, flightItems, carItems, packageItems }
   const routeState = location.state;
   const hotelItems =
     routeState?.type === "cart"
@@ -26,7 +32,19 @@ const CheckoutPage = () => {
       : routeState?.type === "flight"
       ? routeState.items
       : [];
-  const allItems = [...hotelItems, ...flightItems];
+  const carItems =
+    routeState?.type === "cart"
+      ? routeState.carItems || []
+      : routeState?.type === "car"
+      ? routeState.items
+      : [];
+  const packageItems =
+    routeState?.type === "cart"
+      ? routeState.packageItems || []
+      : routeState?.type === "package"
+      ? routeState.items
+      : [];
+  const allItems = [...hotelItems, ...flightItems, ...carItems, ...packageItems];
 
   const [guest, setGuest] = useState({ firstName: "", surname: "", mobile: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -38,7 +56,7 @@ const CheckoutPage = () => {
     setGuest({ ...guest, [e.target.name]: e.target.value });
   };
 
-  const subtotal = allItems.reduce((sum, item) => sum + Number(item.price || 0), 0);
+  const subtotal = allItems.reduce((sum, item) => sum + priceOf(item), 0);
   const taxes = Math.round(subtotal * 0.09);
   const total = subtotal + taxes;
 
@@ -48,7 +66,7 @@ const CheckoutPage = () => {
       return;
     }
     if (allItems.length === 0) {
-      setError("There's nothing to book. Go back and add a hotel or flight first.");
+      setError("There's nothing to book. Go back and add an item first.");
       return;
     }
     setError("");
@@ -61,6 +79,8 @@ const CheckoutPage = () => {
       userNumber: activeUser?.number || null,
       hotels: hotelItems,
       flights: flightItems,
+      cars: carItems,
+      packages: packageItems,
       subtotal,
       taxes,
       total,
@@ -78,7 +98,9 @@ const CheckoutPage = () => {
           dispatch(
             clearCartItems(
               hotelItems.map((i) => i.id),
-              flightItems.map((i) => i.id)
+              flightItems.map((i) => i.id),
+              carItems.map((i) => i.id),
+              packageItems.map((i) => i.id)
             )
           );
         }
@@ -117,7 +139,7 @@ const CheckoutPage = () => {
 
         {allItems.length === 0 && (
           <Box bg="white" mt={4} p={6} textAlign="center">
-            <Text>No items selected. Go back and choose a hotel or flight to book.</Text>
+            <Text>No items selected. Go back and choose something to book.</Text>
             <Button mt={4} colorScheme="blue" onClick={() => navigate("/")}>
               Back to Home
             </Button>
@@ -146,6 +168,30 @@ const CheckoutPage = () => {
                       <Text fontWeight="bold">{item.airline}</Text>
                       <Text fontSize="sm" color="gray.500">{item.from} → {item.to} · {item.departure}</Text>
                     </Box>
+                    <Text fontWeight="semibold">₹{Number(item.price).toLocaleString()}</Text>
+                  </HStack>
+                ))}
+                {carItems.map((item) => (
+                  <HStack key={`car-${item.id}`} justify="space-between">
+                    <HStack>
+                      <Image src={item.image} boxSize="60px" objectFit="cover" borderRadius="6px" />
+                      <Box textAlign="left">
+                        <Text fontWeight="bold">{item.brand} {item.model}</Text>
+                        <Text fontSize="sm" color="gray.500">{item.location} · {item.transmission}</Text>
+                      </Box>
+                    </HStack>
+                    <Text fontWeight="semibold">₹{Number(item.pricePerDay).toLocaleString()}/day</Text>
+                  </HStack>
+                ))}
+                {packageItems.map((item) => (
+                  <HStack key={`package-${item.id}`} justify="space-between">
+                    <HStack>
+                      <Image src={item.image} boxSize="60px" objectFit="cover" borderRadius="6px" />
+                      <Box textAlign="left">
+                        <Text fontWeight="bold">{item.title}</Text>
+                        <Text fontSize="sm" color="gray.500">{item.destination} · {item.nights} Nights</Text>
+                      </Box>
+                    </HStack>
                     <Text fontWeight="semibold">₹{Number(item.price).toLocaleString()}</Text>
                   </HStack>
                 ))}

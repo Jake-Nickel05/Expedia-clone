@@ -3,6 +3,8 @@ import Stay from '../../Pages/Stay/Stay';
 import React from 'react'
 import { InputBox } from '../../Pages/ThingsTodo/InputBox'
 import Flights from '../../Pages/Flights/Flight'
+import Car from '../../Pages/Cars/Car'
+import Package from '../../Pages/Packages/Package'
 
 const MainInputBox = () => {
   return (
@@ -31,13 +33,13 @@ const MainInputBox = () => {
                         <Flights/>
                     </TabPanel>
                     <TabPanel>
-                        <p>Cars</p>
+                        <Car/>
                     </TabPanel>
                     <TabPanel>
                         <InputBox/>
                     </TabPanel>
                     <TabPanel>
-                        <p>Packages</p>
+                        <Package/>
                     </TabPanel>
                 </TabPanels>
             </Tabs>

@@ -15,12 +15,14 @@ import {
   fetchCart,
   removeHotelFromCart,
   removeFlightFromCart,
+  removeCarFromCart,
+  removePackageFromCart,
 } from "../Redux/CartReducer/action";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { hotelItems, flightItems, isLoading } = useSelector(
+  const { hotelItems, flightItems, carItems, packageItems, isLoading } = useSelector(
     (store) => store.CartReducer
   );
 
@@ -36,8 +38,20 @@ const Cart = () => {
     (sum, item) => sum + Number(item.price || 0),
     0
   );
-  const grandTotal = hotelTotal + flightTotal;
-  const isEmpty = hotelItems.length === 0 && flightItems.length === 0;
+  const carTotal = carItems.reduce(
+    (sum, item) => sum + Number(item.pricePerDay || 0),
+    0
+  );
+  const packageTotal = packageItems.reduce(
+    (sum, item) => sum + Number(item.price || 0),
+    0
+  );
+  const grandTotal = hotelTotal + flightTotal + carTotal + packageTotal;
+  const isEmpty =
+    hotelItems.length === 0 &&
+    flightItems.length === 0 &&
+    carItems.length === 0 &&
+    packageItems.length === 0;
 
   const handleCheckout = () => {
     navigate("/checkout", {
@@ -45,6 +59,8 @@ const Cart = () => {
         type: "cart",
         hotelItems,
         flightItems,
+        carItems,
+        packageItems,
       },
     });
   };
@@ -65,7 +81,7 @@ const Cart = () => {
 
       {isEmpty && (
         <Text color="gray.500">
-          Your cart is empty. Add a hotel or flight to get started.
+          Your cart is empty. Add a hotel, flight, car, or package to get started.
         </Text>
       )}
 
@@ -144,6 +160,100 @@ const Cart = () => {
                   colorScheme="red"
                   variant="ghost"
                   onClick={() => dispatch(removeFlightFromCart(item.id))}
+                >
+                  Remove
+                </Button>
+              </HStack>
+            </HStack>
+          ))}
+        </Box>
+      )}
+
+      {carItems.length > 0 && (
+        <Box mb={6}>
+          <Heading size="md" mb={2}>
+            Cars
+          </Heading>
+          {carItems.map((item) => (
+            <HStack
+              key={item.id}
+              justify="space-between"
+              p={3}
+              mb={2}
+              bg="gray.50"
+              borderRadius="8px"
+            >
+              <HStack>
+                <Image
+                  src={item.image}
+                  boxSize="60px"
+                  objectFit="cover"
+                  borderRadius="6px"
+                />
+                <Box>
+                  <Text fontWeight="bold">
+                    {item.brand} {item.model}
+                  </Text>
+                  <Text fontSize="sm" color="gray.500">
+                    {item.location} · {item.transmission}
+                  </Text>
+                </Box>
+              </HStack>
+              <HStack>
+                <Text fontWeight="semibold">
+                  ₹{Number(item.pricePerDay).toLocaleString()}/day
+                </Text>
+                <Button
+                  size="sm"
+                  colorScheme="red"
+                  variant="ghost"
+                  onClick={() => dispatch(removeCarFromCart(item.id))}
+                >
+                  Remove
+                </Button>
+              </HStack>
+            </HStack>
+          ))}
+        </Box>
+      )}
+
+      {packageItems.length > 0 && (
+        <Box mb={6}>
+          <Heading size="md" mb={2}>
+            Packages
+          </Heading>
+          {packageItems.map((item) => (
+            <HStack
+              key={item.id}
+              justify="space-between"
+              p={3}
+              mb={2}
+              bg="gray.50"
+              borderRadius="8px"
+            >
+              <HStack>
+                <Image
+                  src={item.image}
+                  boxSize="60px"
+                  objectFit="cover"
+                  borderRadius="6px"
+                />
+                <Box>
+                  <Text fontWeight="bold">{item.title}</Text>
+                  <Text fontSize="sm" color="gray.500">
+                    {item.destination} · {item.nights} Nights
+                  </Text>
+                </Box>
+              </HStack>
+              <HStack>
+                <Text fontWeight="semibold">
+                  ₹{Number(item.price).toLocaleString()}
+                </Text>
+                <Button
+                  size="sm"
+                  colorScheme="red"
+                  variant="ghost"
+                  onClick={() => dispatch(removePackageFromCart(item.id))}
                 >
                   Remove
                 </Button>
